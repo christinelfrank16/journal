@@ -23,3 +23,31 @@ Entry.prototype.setVowelCount = function() {
   }
   this.vowelCount = counter;
 }
+
+Entry.prototype.setConsCount = function() {
+  var alph = /[a-zA-Z]/;
+  var vowels = /[aeiouAEIOU]/;
+  var counter = 0;
+  for (var i = 0; i < this.entry.length; i++) {
+    if (alph.test(this.entry[i]) && !vowels.test(this.entry[i])) {
+      counter++;
+    }
+  }
+  this.consCount = counter;
+}
+
+Entry.prototype.getTeaser = function() {
+  var regex = /[.!?]/;
+  var firstSent = this.entry.split(regex)[0];
+  var teaser = "";
+
+if (firstSent.split(" ").length <= 8) {
+  teaser = firstSent;
+} else {
+  for(var i = 0; i < 8 ; i++ ){
+    teaser += " " + firstSent.split(" ")[i];
+  }
+  teaser = teaser.substring(1);
+}
+return teaser;
+}
