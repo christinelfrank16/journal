@@ -2,6 +2,13 @@ h1 {
   display: none;
 }
 
+.diaryEntry {
+  width: 80%;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 8px;
+}
+
 /* body{
   background-color: red;
 } */

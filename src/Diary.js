@@ -1,3 +1,4 @@
+import { Entry } from './Entry.js';
 // this is a costructor to hold all our potential entries.
 export function Diary() {
   this.entries = [],
@@ -12,10 +13,21 @@ Diary.prototype.assignId = function(){
 };
 
 // this method puts entries into the entries property, and it assigns an ID first.
-Diary.prototype.addEntry = function(entry) {
+Diary.prototype.addEntry = function(title, entryContent) {
+  var entry = makeEntry(title, entryContent);
   // this is where we are defining the id
   entry.id = this.assignId();
   // this is where we are pushing an entry with its ID into the entries array
   this.entries.push(entry);
 
 };
+
+function makeEntry(title, entry){
+  var finalEntry = new Entry(title, entry);
+  finalEntry.setWordCount();
+  finalEntry.setConsCount();
+  finalEntry.setVowelCount();
+  finalEntry.setTeaser();
+
+  return finalEntry;
+}

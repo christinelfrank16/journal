@@ -3,7 +3,8 @@ export function Entry(title, entry) {
   this.entry = entry,
   this.wordCount = 0,
   this.vowelCount = 0,
-  this.consCount = 0;
+  this.consCount = 0,
+  this.teaser = "";
 }
 // we knew we wanted to count the words so we split the string into an array, using the spaces
 Entry.prototype.setWordCount = function() {
@@ -37,7 +38,7 @@ Entry.prototype.setConsCount = function() {
 };
 
 // this is where we get the first 8 words in a sentence/or the whole sentence
-Entry.prototype.getTeaser = function() {
+Entry.prototype.setTeaser = function() {
   var regex = /[.!?]/;
   var firstSent = this.entry.split(regex)[0];
   var teaser = "";
@@ -50,5 +51,5 @@ Entry.prototype.getTeaser = function() {
     // used the substring method to remove the first weird space that the split method made before the sentence- we added the space to put spaces between the words but theres an awkward first one we gettin rid of
     teaser = teaser.substring(1);
   }
-  return teaser;
+  this.teaser = teaser;
 };
