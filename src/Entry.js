@@ -1,16 +1,15 @@
-function Entry(title, entry) {
+export function Entry(title, entry) {
   this.title = title,
-    this.entry = entry,
-    this.wordCount = 0,
-    this.vowelCount = 0,
-    this.consCount = 0
-
+  this.entry = entry,
+  this.wordCount = 0,
+  this.vowelCount = 0,
+  this.consCount = 0;
 }
 
 Entry.prototype.setWordCount = function() {
   var splitEntry = this.entry.split(" ");
   this.wordCount = splitEntry.length;
-}
+};
 
 Entry.prototype.setVowelCount = function() {
   var regex = /[aeiouAEIOU]/;
@@ -19,10 +18,9 @@ Entry.prototype.setVowelCount = function() {
     if (regex.test(this.entry[i])) {
       counter++;
     }
-
   }
   this.vowelCount = counter;
-}
+};
 
 Entry.prototype.setConsCount = function() {
   var alph = /[a-zA-Z]/;
@@ -34,20 +32,19 @@ Entry.prototype.setConsCount = function() {
     }
   }
   this.consCount = counter;
-}
+};
 
 Entry.prototype.getTeaser = function() {
   var regex = /[.!?]/;
   var firstSent = this.entry.split(regex)[0];
   var teaser = "";
-
-if (firstSent.split(" ").length <= 8) {
-  teaser = firstSent;
-} else {
-  for(var i = 0; i < 8 ; i++ ){
-    teaser += " " + firstSent.split(" ")[i];
+  if (firstSent.split(" ").length <= 8) {
+    teaser = firstSent;
+  } else {
+    for (var i = 0; i < 8; i++) {
+      teaser += " " + firstSent.split(" ")[i];
+    }
+    teaser = teaser.substring(1);
   }
-  teaser = teaser.substring(1);
-}
-return teaser;
-}
+  return teaser;
+};
