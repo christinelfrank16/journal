@@ -13,7 +13,9 @@ Diary.prototype.assignId = function(){
 
 // this method puts entries into the entries property, and it assigns an ID first.
 Diary.prototype.addEntry = function(entry) {
+  // this is where we are defining the id
   entry.id = this.assignId();
+  // this is where we are pushing an entry with its ID into the entries array
   this.entries.push(entry);
 
 };
